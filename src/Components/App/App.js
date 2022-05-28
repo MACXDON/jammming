@@ -31,27 +31,27 @@ class App extends React.Component {
         }
       ],
 
-      playlistName: 'My Playlist',
+      playlistName: 'New Playlist',
 
       playlistTracks: [
-        {
-          name: 'playlistName1',
-          artist: 'playlistArtist1',
-          album: 'playlistAlbum1',
-          id: 4
-        },
-        {
-          name: 'playlistName2',
-          artist: 'playlistArtist2',
-          album: 'playlistAlbum2',
-          id: 5
-        },
-        {
-          name: 'playlistName3',
-          artist: 'playlistArtist3',
-          album: 'playlistAlbum3',
-          id: 6
-        }
+        // {
+        //   name: 'playlistName1',
+        //   artist: 'playlistArtist1',
+        //   album: 'playlistAlbum1',
+        //   id: 4
+        // },
+        // {
+        //   name: 'playlistName2',
+        //   artist: 'playlistArtist2',
+        //   album: 'playlistAlbum2',
+        //   id: 5
+        // },
+        // {
+        //   name: 'playlistName3',
+        //   artist: 'playlistArtist3',
+        //   album: 'playlistAlbum3',
+        //   id: 6
+        // }
       ]
     }
 
@@ -88,6 +88,8 @@ class App extends React.Component {
 
   savePlaylist() {
     let trackURIs = this.state.playlistTracks.map(track => track.uri)
+
+    Spotify.savePlaylist(this.state.playlistName, trackURIs);
   }
 
   search(term) {
