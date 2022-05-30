@@ -1,6 +1,4 @@
-import CLIENT_ID from "./ClientID";
-
-const CLIENT_ID = CLIENT_ID;
+const CLIENT_ID = '1ff8d126ccf249d093b1169a7757bd42';
 const REDIRECT_URI = 'http://localhost:3000/';
 
 let accessToken;
@@ -36,12 +34,8 @@ const Spotify = {
             Authorization: `Bearer ${accessToken}`
         }
 
-        return fetch(`https://api.spotify.com/v1/search?type=track&q=${term}`, { headers })
+        return fetch(`https://api.spotify.com/v1/search?type=track&q=${term}`, { headers: headers })
             .then(response => {
-                if(!response.ok) {
-                    throw new Error()
-                }
-
                 return response.json();
             })
             .then(jsonResponse => {
@@ -83,8 +77,8 @@ const Spotify = {
 
                 // Create a new playlist
                 return fetch(`${baseURL}users/${userID}/playlists`, {
-                    method: 'POST',
                     headers: headers,
+                    method: 'POST',
                     body: JSON.stringify({ 
                         name: playlistName
                     }) 
@@ -95,16 +89,17 @@ const Spotify = {
                 
                     // Add tracks to new playlist
                     return fetch(`${baseURL}users/${userID}/playlists/${playlistID}/tracks`, {
-                        method: 'POST',
                         headers: headers,
+                        method: 'POST',
                         body: JSON.stringify({
                             uris: trackURIs
                         })
-                    }).then(response => {
-                        return response.json();
-                    }).then(jsonResponse => {
-                        const playlistID = jsonResponse.id;
                     })
+                    // .then(response => {
+                    //     return response.json();
+                    // }).then(jsonResponse => {
+                    //     const playlistID = jsonResponse.id;
+                    // })
                 
                 })
 

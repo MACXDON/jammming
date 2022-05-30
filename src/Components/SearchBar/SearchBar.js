@@ -20,6 +20,11 @@ export class SearchBar extends React.Component {
         const term = e.target.value;
 
         this.setState({ term: term });
+
+        /*****  Trigger this.search()
+         **** NOTE: May not work ******/
+
+        this.search();
     }
 
     render() {
