@@ -28,6 +28,25 @@ export class Track extends React.Component {
         }
     }
 
+    audioPreview() {
+        if(this.props.track.preview_url === null) {
+            return (
+                <p>Sorry, no preview.</p>
+            )
+        }
+
+        return (
+            <video
+                controls
+                src={this.props.track.preview_url}
+                typeof="audio/mpeg"
+                width="200px"
+                height="20px"
+            >
+            </video>
+        )
+    }
+
     render() {
         return (
             <div className="Track">
@@ -38,6 +57,7 @@ export class Track extends React.Component {
                     <p>
                         {this.props.track.artist} | {this.props.track.album}
                     </p>
+                    {this.audioPreview()}
                 </div>
                 {this.renderAction()}
             </div>

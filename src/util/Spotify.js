@@ -49,7 +49,8 @@ const Spotify = {
                         name: track.name,
                         artist: track.artists[0].name,
                         album: track.album.name,
-                        uri: track.uri
+                        uri: track.uri,
+                        preview_url: track.preview_url
                     }
                 })
             })
@@ -95,16 +96,18 @@ const Spotify = {
                             uris: trackURIs
                         })
                     })
-                    // .then(response => {
-                    //     return response.json();
-                    // }).then(jsonResponse => {
-                    //     const playlistID = jsonResponse.id;
-                    // })
-                
                 })
 
             })  
     }
 }
+
+// function getAccessToken() {
+//     const client_id = CLIENT_ID;
+//     const redirect_uri = REDIRECT_URI;
+//     const response_type = 'code';
+//     const baseURL = 'https://api.spotify.com/v1/';
+//     const authorize = 'authorize';
+// }
 
 export default Spotify;

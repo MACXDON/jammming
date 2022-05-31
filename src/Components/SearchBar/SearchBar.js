@@ -20,11 +20,6 @@ export class SearchBar extends React.Component {
         const term = e.target.value;
 
         this.setState({ term: term });
-
-        /*****  Trigger this.search()
-         **** NOTE: May not work ******/
-
-        this.search();
     }
 
     render() {
@@ -34,7 +29,7 @@ export class SearchBar extends React.Component {
                     onChange={this.handleTermChange}
                     placeholder="Enter A Song, Album, or Artist" 
                 />
-                <button className="SearchButton">SEARCH</button>
+                <button onClick={this.search} className="SearchButton">SEARCH</button>
             </div>
         )
     }
